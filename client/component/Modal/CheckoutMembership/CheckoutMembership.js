@@ -28,7 +28,7 @@ function CheckoutMembership() {
   const [totalPrice, setTotalPrice] = useState(PRICE);
   const [isNoWalletButtonClicked, setIsNoWalletButtonClicked] = useState(false);
   const { setMintWithWalletSuccessull, windowWidth } = useModalContext();
-  const { address, isConnected } = useAccount();
+  const { address, connector: activeConnector, isConnected } = useAccount();
   const {
     isWaitingApproveUSDCSignatureFromUser,
     isApproveUSDCTxSent,
@@ -111,25 +111,47 @@ function CheckoutMembership() {
       {approveUSDCIsLoading ||
       isWaitingMintSignatureFromUser ||
       mintIsLoading ||
-      isTimeoutApproveActive ? (
+      !isTimeoutApproveActive ? (
         <>
           <div
             className={
               styles.checkout_membership_payout_loading_mint_wallet_container
             }
           >
-            <div
-              className={styles.checkout_membership_payout_loading_mint_wallet}
-            ></div>
+            {isConnected && (
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet_type
+                }
+              >
+                Connecté à {activeConnector.name}{" "}
+              </div>
+            )}
             <div
               className={
-                styles.checkout_membership_payout_loading_mint_wallet_image_container
+                styles.checkout_membership_payout_loading_mint_wallet_animation_wrapper
               }
             >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                alt="Metmask logo"
-              />
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet
+                }
+              ></div>
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet_image_container
+                }
+              >
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                  alt="Metmask logo"
+                />
+              </div>
+            </div>
+            <div
+              className={styles.checkout_membership_payout_loading_mint_tx_type}
+            >
+              <span>{"Approve en cours... ­ (1/2)"}</span>
             </div>
           </div>
         </>

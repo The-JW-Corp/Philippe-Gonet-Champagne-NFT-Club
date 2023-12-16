@@ -204,6 +204,20 @@
 /* === If mint with wallet is clicked === */
 
 .checkout_membership_payout_loading_mint_wallet_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.checkout_membership_payout_loading_mint_wallet_type {
+  height: 60px;
+  color: white;
+  font-family: "red-hat-display";
+  font-size: 24px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.checkout_membership_payout_loading_mint_wallet_animation_wrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -236,12 +250,20 @@
   position: absolute;
   z-index: 1;
   top: 20%;
-  left: 30%;
+  left: 18%;
   width: 160px;
   height: 160px;
 }
-.checkout_membership_crossmint_button {
-  background-color: red;
+.checkout_membership_payout_loading_mint_tx_type {
+  display: flex;
+  align-items: flex-end;
+  height: 60px;
+  color: white;
+  font-family: "red-hat-display";
+  font-size: 18px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 /* === Conditionnal rendering: Modal for Tablet === */
 
@@ -454,7 +476,7 @@
     width: 160px;
     font-size: 24px;
   }
-  .checkout_membership_payout_buttons_container_tablet{
+  .checkout_membership_payout_buttons_container_tablet {
     width: 150px;
   }
   .checkout_membership_payout_buttons_container_tablet > div > div {
