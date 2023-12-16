@@ -4,7 +4,8 @@
 }
 .join_club_title_and_mint_button_container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: space-between;
   width: 95%;
 }
 .join_club_title_container {
@@ -16,9 +17,18 @@
   line-height: normal;
   width: 810px;
 }
-
+.join_club_subtitle {
+  color: #fff;
+  font-family: "red-hat-display";
+  font-size: 24px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 810px;
+  margin-top: 15px;
+}
 .join_club_mint_button_wrap {
-  width: 225px;
+  width: 340px;
   padding: 10px 40px;
   height: 60px;
   border-radius: 15px;
@@ -51,7 +61,7 @@
   font-size: 40px;
   font-weight: 700;
 }
-.join_club_title_club_container{
+.join_club_title_club_container {
   font-size: 30px;
 }
 .join_club_description_container {
@@ -64,7 +74,7 @@
   margin-top: 50px;
   padding: 10px;
   border-bottom: 1px solid var(--Green-100, #a1d884);
-  width: 180px;
+  width: 220px;
   cursor: pointer;
   user-select: none;
 }
@@ -218,7 +228,7 @@
 }
 /* Mobile format */
 @media (max-width: 450px) {
-  .join_club_container{
+  .join_club_container {
     margin-top: 100px;
   }
   .join_club_title_container {
@@ -230,13 +240,13 @@
     width: 100px;
     box-shadow: 2px 2px 10px 5px #a1d884;
   }
-  .join_club_title_club_container{
+  .join_club_title_club_container {
     font-size: 14px;
   }
   .join_club_description_container {
     font-size: 8.5px;
   }
-  .join_club_know_more_container{
+  .join_club_know_more_container {
     margin-top: 17px;
   }
 }
