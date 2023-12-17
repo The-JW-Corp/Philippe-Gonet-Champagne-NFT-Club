@@ -8,8 +8,8 @@ import "../src/ClubCPG.sol";
 // import {HelperConfig} from "./HelperConfig.s.sol";
 
 contract DeployClubCPG is Script {
-    string _name = "test";
-    string _symbol = "test";
+    string _name = "Test Club Champagne Philippe Gonet 2024";
+    string _symbol = "TestClubCPG2024";
     string _uri =
         "https://fuchsia-capable-roundworm-590.mypinata.cloud/ipfs/QmVNN7rd4DnmedcWFttENGpoNtnrFWFouPjcG1VVHqHcFn";
     uint8 _maxWallet = 4;
