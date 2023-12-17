@@ -1,10 +1,8 @@
 import React from "react";
 import style from "../../styles/footer.module.css";
-import {useModalContext} from "../../contexts/ModalContext.tsx";
+import { useModalContext } from "../../contexts/ModalContext.tsx";
 function Footer() {
-  const {
-    windowWidth
-  } = useModalContext();
+  const { windowWidth } = useModalContext();
   return (
     <footer className={style.footer_container}>
       <div className={style.footer_wrap}>
@@ -22,15 +20,15 @@ function Footer() {
           >
             Mentions légales
           </a>
-          {windowWidth > 450 &&
-          <a
-          href="https://www.champagne-philippe-gonet.com/actualites/"
-          target="_blank"
-          className={style.footer_press}
-          >
-            Revue de presse
-          </a>
-          }
+          {windowWidth > 450 && (
+            <a
+              href="https://www.champagne-philippe-gonet.com/actualites/"
+              target="_blank"
+              className={style.footer_press}
+            >
+              Revue de presse
+            </a>
+          )}
           <a
             href="https://www.champagne-philippe-gonet.com/ou-nous-trouver/"
             target="_blank"
@@ -65,12 +63,14 @@ function Footer() {
           >
             <img src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/mdi_instagram.svg?alt=media&token=748677d1-c4eb-4d13-aa99-f18af7bd168a" />
           </a>
-          <a
-            target="_blank"
-            href="https://www.youtube.com/@champagnephilippegonet1589"
-          >
-            <img src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/ri_youtube-fill.svg?alt=media&token=ab4a7da6-5107-4566-88a5-4f57b7dcecba" />
-          </a>
+          {windowWidth > 450 && (
+            <a
+              target="_blank"
+              href="https://www.youtube.com/@champagnephilippegonet1589"
+            >
+              <img src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/ri_youtube-fill.svg?alt=media&token=ab4a7da6-5107-4566-88a5-4f57b7dcecba" />
+            </a>
+          )}
         </div>
       </div>
     </footer>

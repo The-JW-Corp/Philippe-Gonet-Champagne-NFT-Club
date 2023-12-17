@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
+import { useModalContext } from "@/contexts/ModalContext";
 import LoadingAnimation from "@/component/LoadingAnimation/LoadingAnimation";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
@@ -25,7 +26,7 @@ function NftMinted() {
     sent: false,
     loading: false,
   });
-
+  const { windowWidth } = useModalContext();
   function handleCheckboxClick(e) {
     if (e.target.id === "checkbox1") {
       setCheckboxState({ checkbox1: true, checkbox2: false });
@@ -140,7 +141,9 @@ function NftMinted() {
           </>
         ) : displayLoadingSendingMail ? (
           <>
-            <div className={styles.nft_minted_get_access_discord_loading_container}>
+            <div
+              className={styles.nft_minted_get_access_discord_loading_container}
+            >
               <LoadingAnimation />
             </div>
           </>
@@ -148,7 +151,7 @@ function NftMinted() {
           <>
             <>
               <div className={styles.nft_minted_get_acess_discord_description}>
-                Pour avoir être recontacté nous avons besoin de votre email
+                Pour être recontacté nous avons besoin de votre email
               </div>
               <div className={styles.nft_minted_get_access_discord_form}>
                 <input
@@ -177,7 +180,11 @@ function NftMinted() {
                       autoplay
                       keepLastFrame
                       src={animationURL}
-                      style={{ height: "33.75px", width: "33.75px" }}
+                      style={
+                        windowWidth < 450
+                          ? { height: "25px", width: "25px" }
+                          : { height: "33.75px", width: "33.75px" }
+                      }
                     >
                       <Controls
                         visible={false}
@@ -199,7 +206,11 @@ function NftMinted() {
                       autoplay
                       keepLastFrame
                       src={animationURL}
-                      style={{ height: "33.75px", width: "33.75px" }}
+                      style={
+                        windowWidth < 450
+                          ? { height: "25px", width: "25px" }
+                          : { height: "33.75px", width: "33.75px" }
+                      }
                     >
                       <Controls
                         visible={false}
@@ -222,7 +233,7 @@ function NftMinted() {
                 style={isFormValid ? { opacity: "1" } : { opacity: "0.5" }}
                 onClick={handleEmailPushToFirebase}
               >
-                <Button>
+                <Button size={windowWidth < 450 ? "xtra-small" : ""}>
                   <div>Rejoindre le club</div>
                 </Button>
               </div>

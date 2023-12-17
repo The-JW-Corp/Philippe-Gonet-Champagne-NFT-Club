@@ -2,10 +2,13 @@
 } */
 .nft_minted_video_and_validation_message_container {
   display: flex;
+  margin-top: 40px;
+  /* width: 80%; */
 }
 .nft_minted_validation_message_and_logo {
   margin-left: 50px;
 }
+
 .nft_minted_validation_message_container {
   width: 100%;
   height: 78px;
@@ -38,6 +41,7 @@
   border-top: 1px solid var(--Green-100, #a1d884);
   border-bottom: 1px solid var(--Green-100, #a1d884);
   border-left: 1px solid var(--Green-100, #a1d884);
+  width: 60%;
 }
 .nft_minted_get_access_discord_form {
   position: relative;
@@ -220,5 +224,54 @@
     /* background-color: red; */
     display: flex;
     justify-content: space-around;
+  }
+}
+@media (max-width: 750px) {
+  .nft_minted_get_access_discord_form_container {
+    width: 90%;
+  }
+}
+@media (max-width: 450px) {
+  .nft_minted_validation_message_container p {
+    font-size: 16px;
+  }
+  .nft_minted_validation_message_and_logo {
+    margin-left: 25px;
+  }
+  .nft_minted_validation_logo_container {
+    margin-top: 25px;
+  }
+  .nft_minted_get_acess_discord_description {
+    font-size: 14px;
+  }
+  .nft_minted_validation_logo_container img {
+    width: 35px;
+  }
+  .nft_minted_get_access_discord_input {
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .nft_minted_get_access_discord_input::placeholder {
+    font-size: 14px;
+    top: 22%;
+  }
+  .nft_minted_reason_question {
+    font-size: 14px;
+  }
+  .nft_minted_mail_choice_container {
+    width: fit-content;
+    font-size: 12px;
+  }
+  .nft_minted_mail_choice_container span {
+    padding-right: 10px;
+  }
+  .nft_minted_checkbox_container {
+    width: 25px;
+    height: 25px;
+  }
+  .nft_minted_get_access_send_form_button_container > div > div {
+    font-size: 14px;
   }
 }

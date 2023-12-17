@@ -5,7 +5,7 @@ function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       // si le scroll est de plus de 20ox alors isScrolled deviens true
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
 
     window.addEventListener("scroll", handleScroll);

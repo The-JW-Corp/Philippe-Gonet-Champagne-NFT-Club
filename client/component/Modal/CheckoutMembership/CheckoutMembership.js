@@ -26,6 +26,7 @@ function CheckoutMembership() {
   const [isTimeoutApproveActive, setIsTimeoutApproveActive] = useState(false);
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(PRICE);
+  const [isMount, setIsMount] = useState(false);
   const [isNoWalletButtonClicked, setIsNoWalletButtonClicked] = useState(false);
   const {
     mintWithWalletSuccessFull,
@@ -118,12 +119,17 @@ function CheckoutMembership() {
     }
     setTotalPrice(PRICE * quantityCount);
   }, [quantityCount]);
+
+  useEffect(() => {
+    setIsMount(true);
+  }, []);
   return (
     <>
-      {approveUSDCIsLoading ||
-      isWaitingMintSignatureFromUser ||
-      mintIsLoading ||
-      isTimeoutApproveActive ? (
+      {(approveUSDCIsLoading ||
+        isWaitingMintSignatureFromUser ||
+        mintIsLoading ||
+        isTimeoutApproveActive) &&
+      isMount ? (
         <>
           <div
             className={
@@ -164,9 +170,21 @@ function CheckoutMembership() {
               className={styles.checkout_membership_payout_loading_mint_tx_type}
             >
               {isMintTxSent ? (
-                <span>{"Mint en cours... ­ (2/2)"}</span>
+                <>
+                  <span>
+                    {"Mint en cours... ­ (2/2)"}
+                    <br />
+                    {"Ne pas recharger la page"}
+                  </span>{" "}
+                  <br />
+                </>
               ) : (
-                <span>{"Approve en cours... ­ (1/2)"}</span>
+                <>
+                  <span>
+                    {"Approve en cours... ­ (1/2) "} <br />
+                    {"Ne pas recharger la page"}
+                  </span>
+                </>
               )}
             </div>
           </div>
@@ -211,11 +229,11 @@ function CheckoutMembership() {
                       Paiement
                     </span>
                     <div
-                      className={
-                        windowWidth < 950
-                          ? styles.checkout_membership_payout_show_address_container
-                          : ""
-                      }
+                    // className={
+                    //   windowWidth < 950
+                    //     ? styles.checkout_membership_payout_show_address_container
+                    //     : ""
+                    // }
                     >
                       <ConnectButton
                         coolMode
@@ -354,8 +372,9 @@ function CheckoutMembership() {
             >
               <div
                 className={
-                  windowWidth
-                    ? styles.checkout_membership_buttons_container_tablet
+                  windowWidth < 950
+                    ? // ? styles.checkout_membership_buttons_container_tablet
+                      styles.checkout_membership_buttons_container
                     : styles.checkout_membership_buttons_container
                 }
               >
@@ -364,11 +383,12 @@ function CheckoutMembership() {
                     <div
                       className={
                         windowWidth < 950
-                          ? styles.checkout_membership_payout_buttons_and_description_container_tablet
+                          ? // ? styles.checkout_membership_payout_buttons_and_description_container_tablet
+                            styles.checkout_membership_payout_buttons_and_description_container
                           : styles.checkout_membership_payout_buttons_and_description_container
                       }
                     >
-                      {windowWidth < 950 && (
+                      {/* {windowWidth < 950 && (
                         <>
                           <div
                             className={
@@ -398,7 +418,7 @@ function CheckoutMembership() {
                             </div>
                           </div>
                         </>
-                      )}
+                      )} */}
                       <div
                         className={
                           windowWidth < 950

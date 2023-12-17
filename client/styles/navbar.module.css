@@ -136,6 +136,9 @@
   .navbar_menu_wrap {
     max-width: 400px;
   }
+  .navbar_logo_container{
+    transform: scale(0.65);
+  }
   .navbar_menu_our_history,
   .navbar_menu_vintage,
   .navbar_menu_club {
