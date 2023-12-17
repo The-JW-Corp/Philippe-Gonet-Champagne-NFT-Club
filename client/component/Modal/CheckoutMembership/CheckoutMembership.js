@@ -53,26 +53,34 @@ function CheckoutMembership() {
     mintError,
   } = useMint(address, quantityCount);
 
-  async function mintMethodTimeout(timer) {
-    setTimeout(async () => {
-      try {
-        console.log("in try");
-        mintMethod({ from: address });
-        setIsTimeoutApproveActive(false);
-      } catch (error) {
-        console.log("in error");
-        console.error(error);
-        if (!isMintTxSent) {
-          console.log("in callback");
-          mintMethodTimeout(5000);
-        }
-      }
-    }, timer);
-  }
+  // async function mintMethodTimeout(timer) {
+  //   setTimeout(async () => {
+  //     try {
+  //       console.log("in try");
+  //       mintMethod({ from: address });
+  //       setIsTimeoutApproveActive(false);
+  //     } catch (error) {
+  //       console.log("in error");
+  //       console.error(error);
+  //       if (!isMintTxSent) {
+  //         console.log("in callback");
+  //         mintMethodTimeout(5000);
+  //       }
+  //     }
+  //   }, timer);
+  // }
   useEffect(() => {
     if (approveUSDCReceipt) {
+      console.log("in timeout 1");
       setIsTimeoutApproveActive(true);
-      mintMethodTimeout(10000);
+      // mintMethodTimeout(10000);
+      setTimeout(() => {
+        console.log("in timeout");
+        mintMethod({ from: address });
+        console.log("after mint called");
+        setIsTimeoutApproveActive(false);
+        console.log("after timeout true");
+      }, 15000);
     }
   }, [approveUSDCReceipt]);
 
@@ -115,7 +123,7 @@ function CheckoutMembership() {
       {approveUSDCIsLoading ||
       isWaitingMintSignatureFromUser ||
       mintIsLoading ||
-      !isTimeoutApproveActive ? (
+      isTimeoutApproveActive ? (
         <>
           <div
             className={
