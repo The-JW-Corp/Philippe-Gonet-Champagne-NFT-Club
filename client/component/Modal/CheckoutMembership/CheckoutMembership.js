@@ -54,7 +54,7 @@ function CheckoutMembership() {
     mintIsLoading,
     mintError,
   } = useMint(address, quantityCount);
-
+  console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
   // async function mintMethodTimeout(timer) {
   //   setTimeout(async () => {
   //     try {
