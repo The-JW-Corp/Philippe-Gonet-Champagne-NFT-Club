@@ -6,7 +6,6 @@ import Navbar from "../component/Navbar/Navbar.js";
 import JoinClub from "../component/JoinClub/JoinClub.js";
 import Footer from "../component/Footer/Footer.js";
 import FAQ from "../component/FAQ/FAQ.js";
-import Modal from "../component/Modal/Modal.js";
 import CheckoutMembership from "../component/Modal/CheckoutMembership/CheckoutMembership.js";
 import NftMinted from "../component/Modal/NftMinted/NftMinted.js";
 import { motion, useScroll } from "framer-motion";
@@ -16,8 +15,10 @@ const Home: NextPage = () => {
   const [isMintButtonClicked, setIsMintButtonClicked] =
     useState<boolean>(false);
   const { scrollYProgress } = useScroll();
+
   function handleMintButtonClick() {
     setIsMintButtonClicked(true);
+    console.log(isMintButtonClicked);
   }
   const { mintWithWalletSuccessFull, setMintWithWalletSuccessull } =
     useModalContext();
