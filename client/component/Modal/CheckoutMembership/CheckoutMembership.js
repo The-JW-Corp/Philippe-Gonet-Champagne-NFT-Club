@@ -163,7 +163,11 @@ function CheckoutMembership() {
             <div
               className={styles.checkout_membership_payout_loading_mint_tx_type}
             >
-              <span>{"Approve en cours... ­ (1/2)"}</span>
+              {isMintTxSent ? (
+                <span>{"Mint en cours... ­ (2/2)"}</span>
+              ) : (
+                <span>{"Approve en cours... ­ (1/2)"}</span>
+              )}
             </div>
           </div>
           {/* <div className={styles.checkout_membership_payout_loading}>
