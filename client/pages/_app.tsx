@@ -34,7 +34,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
       ? [goerli]
       : [polygonMumbai]),
   ],
-  [publicProvider()],
+  [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>Club Champagne Philippe Gonet</title>
         <meta
           property="og:Philippe Gonet"
           content="Philippe Gonet Mintpage"
