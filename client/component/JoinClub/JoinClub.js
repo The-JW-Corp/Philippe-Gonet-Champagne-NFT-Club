@@ -14,6 +14,7 @@ function JoinClub({ handleMintButtonClick }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
   return (
     <div className={styles.join_club_container}>
       <div className={styles.join_club_title_and_mint_button_container}>
