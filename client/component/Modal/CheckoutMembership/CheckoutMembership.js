@@ -450,15 +450,15 @@ function CheckoutMembership() {
                         </div>
                         {/* <Button size="small"> */}
                         <CrossmintPayButton
-                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                          collectionId="a61d6995-d907-4adc-84a4-1b41de38faa0"
+                          projectId="2c2bc152-8afd-4a73-b345-4335406d4cc6"
                           mintConfig={{
                             totalPrice: `${totalPrice}`,
                             _quantity: `${quantityCount}`,
                           }}
                           environment="staging"
                           mintTo={`${address}`}
-                          successCallbackURL="http://localhost:3000/crossmintpayload"
+                          successCallbackURL="https://club-champagne-philippe-gonet.com/crossmintpayload"
                           getButtonText={(connecting) =>
                             connecting
                               ? "Chargement..."
@@ -492,14 +492,14 @@ function CheckoutMembership() {
                       </Button>
                       <div onClick={handleNoWalletButtonClick}>
                         <CrossmintPayButton
-                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                          collectionId="a61d6995-d907-4adc-84a4-1b41de38faa0"
+                          projectId="2c2bc152-8afd-4a73-b345-4335406d4cc6"
                           mintConfig={{
                             totalPrice: `${totalPrice}`,
                             _quantity: `${quantityCount}`,
                           }}
                           environment="staging"
-                          successCallbackURL="http://localhost:3000/crossmintpayload"
+                          successCallbackURL="https://club-champagne-philippe-gonet.com/crossmintpayload"
                           getButtonText={(connecting) =>
                             connecting
                               ? "Chargement"
