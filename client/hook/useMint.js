@@ -17,7 +17,7 @@ export const useMint = (to, quantity) => {
 
   // Tx construction
   const { config: ClubCPG_Mint } = usePrepareContractWrite({
-    address: ClubCPG_MUMBAI_ADDRESS, //TODO: Dynamic
+    address: ClubCPG_POLYGON_ADDRESS, //TODO: Dynamic
     abi: ClubCPG.abi,
     functionName: "mint",
     args: [

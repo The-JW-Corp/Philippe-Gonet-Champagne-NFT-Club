@@ -19,11 +19,11 @@ export const useApprove = (priceInUSDC) => {
 
   // Tx construction
   const { config: USDC_APPROVAL } = usePrepareContractWrite({
-    address: USDC_MUMBAI_ADDRESS, //TODO: Dynamic
+    address: USDC_POLYGON_ADDRESS, //TODO: Dynamic
     abi: USDC_Polygon.abi,
     functionName: "approve",
     args: [
-      ClubCPG_MUMBAI_ADDRESS, //TODO: Dynamic
+      ClubCPG_POLYGON_ADDRESS, //TODO: Dynamic
       parseUnits(`${priceInUSDC}`, 6),
     ],
   });
