@@ -1,6 +1,10 @@
 import React from "react";
 import style from "../../styles/footer.module.css";
+import {useModalContext} from "../../contexts/ModalContext.tsx";
 function Footer() {
+  const {
+    windowWidth
+  } = useModalContext();
   return (
     <footer className={style.footer_container}>
       <div className={style.footer_wrap}>
@@ -18,13 +22,15 @@ function Footer() {
           >
             Mentions légales
           </a>
+          {windowWidth > 450 &&
           <a
-            href="https://www.champagne-philippe-gonet.com/actualites/"
-            target="_blank"
-            className={style.footer_press}
+          href="https://www.champagne-philippe-gonet.com/actualites/"
+          target="_blank"
+          className={style.footer_press}
           >
             Revue de presse
           </a>
+          }
           <a
             href="https://www.champagne-philippe-gonet.com/ou-nous-trouver/"
             target="_blank"

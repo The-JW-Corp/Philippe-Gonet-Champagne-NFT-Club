@@ -10,7 +10,9 @@ function Button({ handleClick, children, size, connectWalletButton }) {
             className={
               size === "xtra-small"
                 ? styles.button_container_xtra_small_connect_wallet
-                : styles.button_container_small_connect_wallet
+                : size === "medium"
+                  ? styles.button_container_medium_connect_wallet
+                  : styles.button_container_small_connect_wallet
             }
           >
             {children}

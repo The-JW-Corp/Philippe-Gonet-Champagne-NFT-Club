@@ -70,7 +70,7 @@ const Home: NextPage = () => {
         />
         <div className={styles.wrap}>
           <JoinClub handleMintButtonClick={handleMintButtonClick} />
-          <CheckoutMembership />
+          {mintWithWalletSuccessFull ? <NftMinted /> : <CheckoutMembership />}
           <FAQ />
         </div>
         {/* {isMintButtonClicked && (

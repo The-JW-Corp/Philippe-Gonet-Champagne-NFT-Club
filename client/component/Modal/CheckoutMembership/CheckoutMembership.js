@@ -32,7 +32,7 @@ function CheckoutMembership() {
     setMintWithWalletSuccessull,
     windowWidth,
   } = useModalContext();
-  const { address, isConnected } = useAccount();
+  const { address, connector: activeConnector, isConnected } = useAccount();
   const {
     isWaitingApproveUSDCSignatureFromUser,
     isApproveUSDCTxSent,
@@ -115,41 +115,68 @@ function CheckoutMembership() {
       {approveUSDCIsLoading ||
       isWaitingMintSignatureFromUser ||
       mintIsLoading ||
-      isTimeoutApproveActive ? (
+      !isTimeoutApproveActive ? (
         <>
           <div
             className={
               styles.checkout_membership_payout_loading_mint_wallet_container
             }
           >
-            <div
-              className={styles.checkout_membership_payout_loading_mint_wallet}
-            ></div>
+            {isConnected && activeConnector && (
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet_type
+                }
+              >
+                Connecté à {activeConnector?.name}{" "}
+              </div>
+            )}
             <div
               className={
-                styles.checkout_membership_payout_loading_mint_wallet_image_container
+                styles.checkout_membership_payout_loading_mint_wallet_animation_wrapper
               }
             >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                alt="Metmask logo"
-              />
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet
+                }
+              ></div>
+              <div
+                className={
+                  styles.checkout_membership_payout_loading_mint_wallet_image_container
+                }
+              >
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                  alt="Metmask logo"
+                />
+              </div>
+            </div>
+            <div
+              className={styles.checkout_membership_payout_loading_mint_tx_type}
+            >
+              <span>{"Approve en cours... ­ (1/2)"}</span>
             </div>
           </div>
+          {/* <div className={styles.checkout_membership_payout_loading}>
+
+          </div> */}
         </>
       ) : (
         <>
           <div
             className={
+              // TEST
               windowWidth < 950
-                ? styles.checkout_membership_container_tablet
+                ? styles.checkout_membership_container
                 : styles.checkout_membership_container
             }
           >
             <div
               className={
+                // TEST
                 windowWidth < 950
-                  ? styles.checkoutmembership_payout_title_and_show_address_tablet
+                  ? styles.checkoutmembership_payout_title_and_show_address
                   : ""
               }
             >
@@ -162,8 +189,10 @@ function CheckoutMembership() {
                   >
                     <span
                       className={
+                        // TEST
                         windowWidth < 950
-                          ? styles.checkout_membership_payout_title_tablet
+                          ? // ? styles.checkout_membership_payout_title_tablet
+                            styles.checkout_membership_payout_title
                           : styles.checkout_membership_payout_title
                       }
                     >
@@ -296,7 +325,7 @@ function CheckoutMembership() {
                           : styles.checkout_membership_selector_text_limitation
                       }
                     >
-                      *Limitée à 4 par personne maximum
+                      *achat de 4 pass par client maximum
                     </div>
                   </div>
                 </div>
@@ -304,8 +333,10 @@ function CheckoutMembership() {
             </div>
             <div
               className={
+                //  TEST
                 windowWidth < 950
-                  ? styles.checkout_membership_explanation_and_buttons_container_tablet
+                  ? // ? styles.checkout_membership_explanation_and_buttons_container_tablet
+                    styles.checkout_membership_explanation_and_buttons_container
                   : styles.checkout_membership_explanation_and_buttons_container
               }
             >
@@ -422,7 +453,8 @@ function CheckoutMembership() {
                     >
                       <Button
                         connectWalletButton={true}
-                        size={windowWidth < 950 ? "xtra-small" : "small"}
+                        size=""
+                        // size={windowWidth < 950 ? "xtra-small" : "small"}
                       >
                         <div onClick={openConnectModal}>Payer en crypto</div>
                       </Button>
@@ -446,6 +478,16 @@ function CheckoutMembership() {
                     </div>
                   </>
                 )}
+              </div>
+              <div className={styles.checkout_membership_whatsapp_container}>
+                <span>
+                  Pour toute question, écrivez nous sur whatsapp, notre équipe
+                  est la pour vous aider.
+                </span>
+                <a href="https://wa.me/message/WZZB6ATQWIKPN1">
+                  Nous contacter{" "}
+                  <img src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/whatsapp2.svg?alt=media&token=7a7cde58-ac4c-4e63-943f-c6972e9b0870"></img>
+                </a>
               </div>
             </div>
           </div>

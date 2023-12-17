@@ -13,7 +13,6 @@ const CrossmintPayload = () => {
   }, []);
   useEffect(() => {
     if (isMount) {
-      setTimeout(() => {
         const pParam = searchParams.get("p");
         if (pParam) {
           const decodedData = JSON.parse(decodeURIComponent(pParam));
@@ -27,7 +26,6 @@ const CrossmintPayload = () => {
             window.close();
           }, 200);
         }
-      }, 2000);
     }
   }, [isMount]);
   return (
