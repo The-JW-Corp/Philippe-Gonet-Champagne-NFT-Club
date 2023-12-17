@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/modal-styles/modal-styles-content/nft-minted.module.css";
 import Video from "../../Video/Video";
+import LoadingAnimation from "@/component/LoadingAnimation/LoadingAnimation";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
@@ -11,8 +12,13 @@ function NftMinted() {
     checkbox2: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
+  const [displayValidation, setDisplayValidation] = useState(false);
+  const [displayLoadingSendingMail, setDisplayLoadingSendingMail] =
+    useState(false);
   const animationURL =
     "https://lottie.host/93e43ecb-ee95-4780-a6bd-dd26d40a0e0a/6M8E5VrpAK.json";
+  const validationAnimationUrl =
+    "https://lottie.host/ecbf71f5-2407-40c4-8dd0-dbc613ca6b08/ZrRVS6ZZpy.json";
   const [email, setEmail] = useState({
     value: "",
     errorMessage: false,
@@ -47,11 +53,12 @@ function NftMinted() {
   }
   async function handleEmailPushToFirebase(e) {
     e.preventDefault();
-    console.log("click")
+    // console.log("click");
     if (isFormValid) {
-      console.log("form valid et click")
+      // console.log("form valid et click");
       try {
-        console.log("try")
+        // console.log("try");
+        setDisplayLoadingSendingMail(true);
         const docRef = await addDoc(collection(db, "mail_address"), {
           mail: email,
           type: checkboxState.checkbox1
@@ -61,7 +68,10 @@ function NftMinted() {
               : "Sent without tell",
         });
         console.log("Document written with ID: ", docRef.id);
+        setDisplayLoadingSendingMail(false);
+        setDisplayValidation(true);
       } catch (e) {
+        setDisplayLoadingSendingMail(false);
         console.error("Error adding document: ", e);
       }
     }
@@ -96,98 +106,129 @@ function NftMinted() {
         </div>
       </div>
       <div className={styles.nft_minted_get_access_discord_form_container}>
-        <div className={styles.nft_minted_get_acess_discord_description}>
-          Pour avoir accès au discord nous avons besoin de votre email{" "}
-        </div>
-        <div className={styles.nft_minted_get_access_discord_form}>
-          <input
-            className={styles.nft_minted_get_access_discord_input}
-            placeholder="e-mail"
-            type="email"
-            required
-            onKeyDown={handleKeyDown}
-            onChange={handleEmailChange}
-          />
-          <div
-            onClick={handleEmailPushToFirebase}
-            className={styles.nft_minted_get_access_discord_error_message}
-          >
-            {email.errorMessage && <p>{email.errorMessage}</p>}
-          </div>
-          {/* <button
-          className={styles.nft_minted_get_access_discord_send_mail_button}
-          style={
-            email.errorMessage === false
-              ? { opacity: "0.5" }
-              : email.errorMessage === "Adresse e-mail invalide"
-                ? { opacity: "0.5" }
-                : { opacity: "1" }
-          }
-        >
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/arrow-bottom.svg?alt=media&token=76cef9a9-f215-41f7-9585-b951b6535e6c"
-            alt=""
-          />
-        </button> */}
-        </div>
-        <div className={styles.nft_minted_reason_question}>
-          Pour qui avez-vous acheté cette adhésion au club ?
-        </div>
-        <div className={styles.nft_minted_mail_reason_container}>
-          <div className={styles.nft_minted_mail_choice_container}>
-            <span>Pour moi</span>
-            {checkboxState.checkbox1 ? (
-              <Player
-                autoplay
-                keepLastFrame
-                src={animationURL}
-                style={{ height: "33.75px", width: "33.75px" }}
-              >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
-            ) : (
+        {displayValidation ? (
+          <>
+            <div
+              className={
+                styles.nft_minted_get_access_discord_validation_message_container
+              }
+            >
               <div
-                onClick={handleCheckboxClick}
-                id="checkbox1"
-                className={styles.nft_minted_checkbox_container}
-              ></div>
-            )}
-          </div>
-          <div className={styles.nft_minted_mail_choice_container}>
-            <span>Pour offrir</span>
-            {checkboxState.checkbox2 ? (
-              <Player
-                autoplay
-                keepLastFrame
-                src={animationURL}
-                style={{ height: "33.75px", width: "33.75px" }}
+                className={styles.nft_minted_get_access_discord_validation_logo}
               >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
-            ) : (
+                <Player
+                  autoplay
+                  keepLastFrame
+                  src={validationAnimationUrl}
+                  style={{ height: "100.75px", width: "100.75px" }}
+                >
+                  <Controls
+                    visible={false}
+                    buttons={["play", "repeat", "frame", "debug"]}
+                  />
+                </Player>
+              </div>
               <div
-                onClick={handleCheckboxClick}
-                id="checkbox2"
-                className={styles.nft_minted_checkbox_container}
-              ></div>
-            )}
-          </div>
-        </div>
-        <div
-          className={styles.nft_minted_get_access_send_form_button_container}
-          style={isFormValid ? { opacity: "1" } : { opacity: "0.5" }}
-          onClick={handleEmailPushToFirebase}
-        >
-          <Button>
-            <div>Rejoindre le club</div>
-          </Button>
-        </div>
+                className={
+                  styles.nft_minted_get_access_discord_validation_message
+                }
+              >
+                Votre mail a bien été enregistré vous allez être recontacté pour
+                rejoindre le club !
+              </div>
+            </div>
+          </>
+        ) : displayLoadingSendingMail ? (
+          <>
+            <div className={styles.nft_minted_get_access_discord_loading_container}>
+              <LoadingAnimation />
+            </div>
+          </>
+        ) : (
+          <>
+            <>
+              <div className={styles.nft_minted_get_acess_discord_description}>
+                Pour avoir être recontacté nous avons besoin de votre email
+              </div>
+              <div className={styles.nft_minted_get_access_discord_form}>
+                <input
+                  className={styles.nft_minted_get_access_discord_input}
+                  placeholder="e-mail"
+                  type="email"
+                  required
+                  onKeyDown={handleKeyDown}
+                  onChange={handleEmailChange}
+                />
+                <div
+                  onClick={handleEmailPushToFirebase}
+                  className={styles.nft_minted_get_access_discord_error_message}
+                >
+                  {email.errorMessage && <p>{email.errorMessage}</p>}
+                </div>
+              </div>
+              <div className={styles.nft_minted_reason_question}>
+                Pour qui avez-vous acheté cette adhésion au club ?
+              </div>
+              <div className={styles.nft_minted_mail_reason_container}>
+                <div className={styles.nft_minted_mail_choice_container}>
+                  <span>Pour moi</span>
+                  {checkboxState.checkbox1 ? (
+                    <Player
+                      autoplay
+                      keepLastFrame
+                      src={animationURL}
+                      style={{ height: "33.75px", width: "33.75px" }}
+                    >
+                      <Controls
+                        visible={false}
+                        buttons={["play", "repeat", "frame", "debug"]}
+                      />
+                    </Player>
+                  ) : (
+                    <div
+                      onClick={handleCheckboxClick}
+                      id="checkbox1"
+                      className={styles.nft_minted_checkbox_container}
+                    ></div>
+                  )}
+                </div>
+                <div className={styles.nft_minted_mail_choice_container}>
+                  <span>Pour offrir</span>
+                  {checkboxState.checkbox2 ? (
+                    <Player
+                      autoplay
+                      keepLastFrame
+                      src={animationURL}
+                      style={{ height: "33.75px", width: "33.75px" }}
+                    >
+                      <Controls
+                        visible={false}
+                        buttons={["play", "repeat", "frame", "debug"]}
+                      />
+                    </Player>
+                  ) : (
+                    <div
+                      onClick={handleCheckboxClick}
+                      id="checkbox2"
+                      className={styles.nft_minted_checkbox_container}
+                    ></div>
+                  )}
+                </div>
+              </div>
+              <div
+                className={
+                  styles.nft_minted_get_access_send_form_button_container
+                }
+                style={isFormValid ? { opacity: "1" } : { opacity: "0.5" }}
+                onClick={handleEmailPushToFirebase}
+              >
+                <Button>
+                  <div>Rejoindre le club</div>
+                </Button>
+              </div>
+            </>
+          </>
+        )}
       </div>
       <div className={styles.nft_minted_socials_description}>
         Suivez-nous sur nos réseaux sociaux
