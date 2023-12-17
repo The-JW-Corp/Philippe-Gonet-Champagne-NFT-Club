@@ -31,7 +31,7 @@ export const ClubCPG_MUMBAI_ADDRESS =
   "0xF45D28d9954BC9388cCe2FB3Acdb9Dc743E12DE1";
 
 // Should come from BC call
-export const MAX_QUANTITY_NFT = 3;
+export const MAX_QUANTITY_NFT = 4;
 
 // Should come from BC call
-export const PRICE = 30;
+export const PRICE = 320;

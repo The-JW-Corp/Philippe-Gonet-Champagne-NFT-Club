@@ -61,17 +61,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           key="Philippe Gonet"
         />
       </Head>
-      <div className="page-container"></div>
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider theme={darkTheme()} chains={chains}>
-          <ModalProvider>
-            <CrossmintProvider>
-              <Component {...pageProps} />
-            </CrossmintProvider>
-          </ModalProvider>
-        </RainbowKitProvider>
-      </WagmiConfig>
-      <div />
+      <div className="page-container">
+        <WagmiConfig config={wagmiConfig}>
+          <RainbowKitProvider theme={darkTheme()} chains={chains}>
+            <ModalProvider>
+              <CrossmintProvider>
+                <Component {...pageProps} />
+              </CrossmintProvider>
+            </ModalProvider>
+          </RainbowKitProvider>
+        </WagmiConfig>
+      </div>
     </>
   );
 }

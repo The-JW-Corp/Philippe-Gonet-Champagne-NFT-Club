@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.home_circle_background_top {
+/* .home_circle_background_top {
   position: absolute;
   left: 8.60280659vw;
   top: -446px;
@@ -43,12 +43,12 @@
   top: 25vh;
   left: 40vw;
   user-select: none;
-}
+} */
 .home_philippe_gonet_logo img {
   width: 389.131px;
   height: 389.131px;
 }
-.home_circle_background_middle_right {
+/* .home_circle_background_middle_right {
   position: absolute;
   right: -400px;
   top: 521px;
@@ -58,7 +58,7 @@
   opacity: 0.16;
   background: var(--Green-100, #a1d884);
   filter: blur(98.0999984741211px);
-}
+} */
 @media (max-width: 1450px) {
   .wrap {
     max-width: 1200px;
