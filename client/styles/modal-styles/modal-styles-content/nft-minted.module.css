@@ -180,6 +180,27 @@
   width: 35px;
   height: 35px;
 }
+/* Conditionnal Rendering: If mail is loading */
+.nft_minted_get_access_discord_loading_container {
+  height: 50px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  position: relative;
+}
+/* Conditionnal Rendering: If mail sent */
+.nft_minted_get_access_discord_validation_logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.nft_minted_get_access_discord_validation_message {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
 @keyframes scale {
   0% {
     transform: scale(0.5);

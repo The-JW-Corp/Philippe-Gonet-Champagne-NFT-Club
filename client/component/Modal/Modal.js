@@ -19,6 +19,8 @@ function Modal({ children, setState }) {
                 ? styles.modal_container_nft_minted_tablet
                 : styles.modal_container
             }
+            ref={modalContainerRef}
+            onMouseDown={handleClickOutsideModal}
           >
             <div
               className={

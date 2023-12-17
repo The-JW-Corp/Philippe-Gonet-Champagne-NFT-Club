@@ -21,7 +21,7 @@ interface ModalProviderProps {
 
 export function ModalProvider({ children }: ModalProviderProps) {
   const [mintWithWalletSuccessFull, setMintWithWalletSuccessull] =
-    useState<boolean>(false);
+    useState<boolean>(true);
   const [windowWidth, setWindowWidth] = useState<number | undefined >();
   return (
     <ModalContext.Provider
