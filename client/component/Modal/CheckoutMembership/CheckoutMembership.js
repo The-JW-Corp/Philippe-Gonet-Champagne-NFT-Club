@@ -456,7 +456,6 @@ function CheckoutMembership() {
                             totalPrice: `${totalPrice}`,
                             _quantity: `${quantityCount}`,
                           }}
-                          environment="staging"
                           mintTo={`${address}`}
                           successCallbackURL="https://club-champagne-philippe-gonet.com/crossmintpayload"
                           getButtonText={(connecting) =>
@@ -498,7 +497,6 @@ function CheckoutMembership() {
                             totalPrice: `${totalPrice}`,
                             _quantity: `${quantityCount}`,
                           }}
-                          environment="staging"
                           successCallbackURL="https://club-champagne-philippe-gonet.com/crossmintpayload"
                           getButtonText={(connecting) =>
                             connecting
