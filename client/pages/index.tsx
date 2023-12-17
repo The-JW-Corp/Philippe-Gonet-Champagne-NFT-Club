@@ -69,19 +69,15 @@ const Home: NextPage = () => {
           }}
         />
         <div className={styles.wrap}>
-          {/* <ConnectButton /> */}
           <JoinClub handleMintButtonClick={handleMintButtonClick} />
+          <CheckoutMembership />
           <FAQ />
         </div>
-        {isMintButtonClicked && (
+        {/* {isMintButtonClicked && (
           <Modal setState={setIsMintButtonClicked}>
-            {mintWithWalletSuccessFull ? (
-              <NftMinted />
-            ) : (
-              <CheckoutMembership />
-            )}
+            {mintWithWalletSuccessFull ? <NftMinted /> : <CheckoutMembership />}
           </Modal>
-        )}
+        )} */}
       </div>
       <Footer />
     </>

@@ -90,6 +90,11 @@
 .join_club_know_more_champagne_logo {
   margin-left: 10px;
 }
+.join_club_price {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 25px;
+}
 @media (max-width: 1750px) {
   .join_club_title_and_description_container {
     /* padding-right:20px ;  */

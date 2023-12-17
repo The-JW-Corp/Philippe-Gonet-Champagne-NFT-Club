@@ -38,6 +38,14 @@ function JoinClub({ handleMintButtonClick }) {
           />
         </div>
       </a>
+
+      <div className={styles.join_club_price}>
+        Le prix est environs de 290€ ou 320$ (320 USDC)
+      </div>
+      <div className={styles.join_club_price}>
+        Une fois le paiement confirmé, une fenêtre va s’ouvrir. N’oubliez pas de
+        nous communiquer votre adresse e-mail afin d’être recontacté.
+      </div>
     </div>
   );
 }

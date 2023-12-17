@@ -27,7 +27,11 @@ function CheckoutMembership() {
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(PRICE);
   const [isNoWalletButtonClicked, setIsNoWalletButtonClicked] = useState(false);
-  const { setMintWithWalletSuccessull, windowWidth } = useModalContext();
+  const {
+    mintWithWalletSuccessFull,
+    setMintWithWalletSuccessull,
+    windowWidth,
+  } = useModalContext();
   const { address, isConnected } = useAccount();
   const {
     isWaitingApproveUSDCSignatureFromUser,
@@ -185,11 +189,40 @@ function CheckoutMembership() {
 
               <div
                 className={
-                  windowWidth < 950
-                    ? styles.checkout_membership_video_and_selector_and_price_container_tablet
-                    : ""
+                  styles.checkout_membership_video_and_selector_and_price_container
                 }
               >
+                <div
+                  className={
+                    styles.checkout_membership_video_and_selector_and_price_container_price_wrap
+                  }
+                >
+                  <div className={styles.checkout_membership_selector_title}>
+                    Prix
+                  </div>
+                  <div
+                    style={isConnected ? { marginBottom: "40px" } : {}}
+                    className={
+                      windowWidth < 950
+                        ? styles.checkout_membership_price_container_tablet
+                        : styles.checkout_membership_price_container
+                    }
+                  >
+                    <div
+                      className={
+                        windowWidth < 950
+                          ? styles.checkout_membership_price_tablet
+                          : styles.checkout_membership_price
+                      }
+                      key={totalPrice}
+                    >
+                      {totalPrice}
+                    </div>
+                    <div className={styles.checkout_membership_price_currency}>
+                      USDC
+                    </div>
+                  </div>
+                </div>
                 <div
                   className={
                     windowWidth < 950
@@ -197,7 +230,6 @@ function CheckoutMembership() {
                       : styles.checkout_membership_video_and_selector_container
                   }
                 >
-                  <Video size="xtra-small" />
                   <div
                     className={
                       windowWidth < 950
@@ -264,30 +296,8 @@ function CheckoutMembership() {
                           : styles.checkout_membership_selector_text_limitation
                       }
                     >
-                      *Limité à 2 par personnes maximum
+                      *Limitée à 4 par personne maximum
                     </div>
-                  </div>
-                </div>
-                <div
-                  style={isConnected ? { marginBottom: "40px" } : {}}
-                  className={
-                    windowWidth < 950
-                      ? styles.checkout_membership_price_container_tablet
-                      : styles.checkout_membership_price_container
-                  }
-                >
-                  <div
-                    className={
-                      windowWidth < 950
-                        ? styles.checkout_membership_price_tablet
-                        : styles.checkout_membership_price
-                    }
-                    key={totalPrice}
-                  >
-                    {totalPrice}
-                  </div>
-                  <div className={styles.checkout_membership_price_currency}>
-                    USDC
                   </div>
                 </div>
               </div>
@@ -296,46 +306,9 @@ function CheckoutMembership() {
               className={
                 windowWidth < 950
                   ? styles.checkout_membership_explanation_and_buttons_container_tablet
-                  : ""
+                  : styles.checkout_membership_explanation_and_buttons_container
               }
             >
-              {!isConnected && (
-                <div
-                  className={
-                    windowWidth < 950
-                      ? styles.checkout_membership_explanation_tablet
-                      : styles.checkout_membership_explanation
-                  }
-                >
-                  <div className={styles.checkout_membership_explanation_title}>
-                    Le CLUB
-                  </div>
-                  <div
-                    className={
-                      windowWidth < 950
-                        ? styles.checkout_membership_explanation_description_tablet
-                        : styles.checkout_membership_explanation_description
-                    }
-                  >
-                    {windowWidth < 950 ? (
-                      <>
-                        Le Club Membre Philippe Gonet propose une expérience
-                        exclusive offerte par la maison de champagne Philippe
-                        Gonet, réputée pour son engagement en faveur de
-                        l'excellence et de l'authenticité. Les membres
-                        bénéficient d'une collaboration privilégiée avec quatre
-                        chefs de renom, leur ouvrant la porte à des expériences
-                        gastronomiques exceptionnelles.
-                      </>
-                    ) : (
-                      <>
-                        Le Club Membre Philippe Gonet propose une expérience
-                        exclusive offerte par la maison de champagne
-                      </>
-                    )}
-                  </div>
-                </div>
-              )}
               <div
                 className={
                   windowWidth
@@ -343,151 +316,136 @@ function CheckoutMembership() {
                     : styles.checkout_membership_buttons_container
                 }
               >
-                {
-                  // waitingWalletConnection ? (
-                  //   <>
-                  //     <div className={styles.checkout_membership_loading_container}>
-                  //       <LoadingAnimation />
-                  //     </div>
-                  //   </>
-                  // ) :
-                  isConnected ? (
-                    <>
+                {isConnected ? (
+                  <>
+                    <div
+                      className={
+                        windowWidth < 950
+                          ? styles.checkout_membership_payout_buttons_and_description_container_tablet
+                          : styles.checkout_membership_payout_buttons_and_description_container
+                      }
+                    >
+                      {windowWidth < 950 && (
+                        <>
+                          <div
+                            className={
+                              styles.checkout_membership_payout_explanation_title_and_description_tablet
+                            }
+                          >
+                            <div
+                              className={
+                                styles.checkout_membership_payout_explanation_title_tablet
+                              }
+                            >
+                              Le CLUB
+                            </div>
+                            <div
+                              className={
+                                styles.checkout_membership_explanation_description_tablet
+                              }
+                            >
+                              Le Club Membre Philippe Gonet propose une
+                              expérience exclusive offerte par la maison de
+                              champagne Philippe Gonet, réputée pour son
+                              engagement en faveur de l'excellence et de
+                              l'authenticité. Les membres bénéficient d'une
+                              collaboration privilégiée avec quatre chefs de
+                              renom, leur ouvrant la porte à des expériences
+                              gastronomiques exceptionnelles.
+                            </div>
+                          </div>
+                        </>
+                      )}
                       <div
                         className={
                           windowWidth < 950
-                            ? styles.checkout_membership_payout_buttons_and_description_container_tablet
-                            : styles.checkout_membership_payout_buttons_and_description_container
+                            ? styles.checkout_membership_payout_buttons_container_tablet
+                            : styles.checkout_membership_payout_buttons_container
                         }
                       >
-                        {windowWidth < 950 && (
-                          <>
+                        <div onClick={approveUSDCMethod}>
+                          <Button
+                            size={windowWidth < 700 ? "xtra-small" : "small"}
+                          >
+                            <div>Payer avec mon wallet</div>
                             <div
                               className={
-                                styles.checkout_membership_payout_explanation_title_and_description_tablet
+                                styles.checkout_membership_payout_wallet_logo_container
                               }
                             >
-                              <div
-                                className={
-                                  styles.checkout_membership_payout_explanation_title_tablet
-                                }
-                              >
-                                Le CLUB
-                              </div>
-                              <div
-                                className={
-                                  styles.checkout_membership_explanation_description_tablet
-                                }
-                              >
-                                Le Club Membre Philippe Gonet propose une
-                                expérience exclusive offerte par la maison de
-                                champagne Philippe Gonet, réputée pour son
-                                engagement en faveur de l'excellence et de
-                                l'authenticité. Les membres bénéficient d'une
-                                collaboration privilégiée avec quatre chefs de
-                                renom, leur ouvrant la porte à des expériences
-                                gastronomiques exceptionnelles.
-                              </div>
-                            </div>
-                          </>
-                        )}
-                        <div
-                          className={
-                            windowWidth < 950
-                              ? styles.checkout_membership_payout_buttons_container_tablet
-                              : styles.checkout_membership_payout_buttons_container
-                          }
-                        >
-                          <div onClick={approveUSDCMethod}>
-                            <Button
-                              size={windowWidth < 700 ? "xtra-small" : "small"}
-                            >
-                              <div>Payer avec mon wallet</div>
-                              <div
-                                className={
-                                  styles.checkout_membership_payout_wallet_logo_container
-                                }
-                              >
-                                <img
-                                  src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
-                                  alt=""
-                                />
+                              <img
+                                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/metamask.svg?alt=media&token=26bcfafe-a5a8-4f92-a257-3178c76e0256"
+                                alt=""
+                              />
 
-                                <img
-                                  src="https://www.rainbowkit.com/rainbow.svg"
-                                  alt=""
-                                />
-                              </div>
-                            </Button>
-                          </div>
-                          {/* <Button size="small"> */}
-                          <CrossmintPayButton
-                            collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                            projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
-                            mintConfig={{
-                              totalPrice: `${totalPrice}`,
-                              _quantity: `${quantityCount}`,
-                            }}
-                            environment="staging"
-                            mintTo={`${address}`}
-                            successCallbackURL="http://localhost:3000/crossmintpayload"
-                            getButtonText={(connecting) =>
-                              connecting
-                                ? "Chargement..."
-                                : `Payer par carte bancaire`
-                            }
-                          />
-                          {/* <div>Payer par carte bancaire</div>
+                              <img
+                                src="https://www.rainbowkit.com/rainbow.svg"
+                                alt=""
+                              />
+                            </div>
+                          </Button>
+                        </div>
+                        {/* <Button size="small"> */}
+                        <CrossmintPayButton
+                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
+                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                          mintConfig={{
+                            totalPrice: `${totalPrice}`,
+                            _quantity: `${quantityCount}`,
+                          }}
+                          environment="staging"
+                          mintTo={`${address}`}
+                          successCallbackURL="http://localhost:3000/crossmintpayload"
+                          getButtonText={(connecting) =>
+                            connecting
+                              ? "Chargement..."
+                              : `Payer par carte bancaire`
+                          }
+                        />
+                        {/* <div>Payer par carte bancaire</div>
                         <div>
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/crossmint.svg?alt=media&token=2383cc02-1f5c-43ff-8964-7a86ca450e0a"
                             alt=""
                           />
                         </div> */}
-                          {/* </Button> */}
-                        </div>
+                        {/* </Button> */}
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      {isNoWalletButtonClicked ? (
-                        <Button size="medium">
-                          <CrossmintPayButton
-                            collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
-                            projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
-                            mintConfig={{
-                              totalPrice: `${totalPrice}`,
-                              _quantity: `${quantityCount}`,
-                            }}
-                            environment="staging"
-                            successCallbackURL="http://localhost:3000/crossmintpayload"
-                            getButtonText={(connecting) =>
-                              connecting
-                                ? "Connecting"
-                                : `Payer par corte bancaire`
-                            }
-                          />
-                        </Button>
-                      ) : (
-                        <>
-                          <Button
-                            connectWalletButton={true}
-                            size={windowWidth < 950 ? "xtra-small" : "small"}
-                          >
-                            <div onClick={openConnectModal}>J'ai un wallet</div>
-                          </Button>
-                          <div onClick={handleNoWalletButtonClick}>
-                            <Button
-                              size={windowWidth < 950 ? "xtra-small" : "small"}
-                            >
-                              Je n'ai pas de wallet
-                            </Button>
-                          </div>
-                        </>
-                      )}
-                    </>
-                  )
-                }
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={
+                        styles.checkout_membership_payout_buttons_container_first
+                      }
+                    >
+                      <Button
+                        connectWalletButton={true}
+                        size={windowWidth < 950 ? "xtra-small" : "small"}
+                      >
+                        <div onClick={openConnectModal}>Payer en crypto</div>
+                      </Button>
+                      <div onClick={handleNoWalletButtonClick}>
+                        <CrossmintPayButton
+                          collectionId="5486dc96-3dbb-4adc-94b6-88b12a143075"
+                          projectId="e9f5a913-7846-42d4-ae39-9a31875b9dca"
+                          mintConfig={{
+                            totalPrice: `${totalPrice}`,
+                            _quantity: `${quantityCount}`,
+                          }}
+                          environment="staging"
+                          successCallbackURL="http://localhost:3000/crossmintpayload"
+                          getButtonText={(connecting) =>
+                            connecting
+                              ? "Chargement"
+                              : `Payer par carte bancaire`
+                          }
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
