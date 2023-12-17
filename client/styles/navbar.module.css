@@ -62,7 +62,10 @@
   opacity: 0.5;
   transition: 300ms;
 }
-
+.navbar_logo {
+  width: 50px;
+  height: 50px;
+}
 @media (max-width: 1450px) {
   .navbar_menu_wrap {
     max-width: 1220px;
@@ -102,10 +105,16 @@
     padding: 10px;
   }
 }
+.navbar_logo {
+  scale: 0.8;
+}
 @media (max-width: 850px) {
   .navbar_menu_wrap {
     max-width: 700px;
   }
+}
+.navbar_logo {
+  scale: 0.55;
 }
 @media (max-width: 750px) {
   .navbar_menu_wrap {
@@ -116,6 +125,9 @@
   .navbar_menu_club {
     font-size: 11px;
     padding: 5px;
+  }
+  .navbar_logo {
+    scale: 0.4;
   }
 }
 @media (max-width: 650px) {
@@ -131,12 +143,15 @@
     font-size: 9px;
     padding: 5px;
   }
+  .navbar_logo {
+    scale: 0.3;
+  }
 }
 @media (max-width: 550px) {
   .navbar_menu_wrap {
     max-width: 400px;
   }
-  .navbar_logo_container{
+  .navbar_logo_container {
     transform: scale(0.65);
   }
   .navbar_menu_our_history,

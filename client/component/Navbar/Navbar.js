@@ -32,25 +32,31 @@ function Navbar() {
         <div className={styles.navbar_menu_container}>
           <div className={styles.navbar_menu_wrap}>
             <a
-              href="https://www.champagne-philippe-gonet.com/notre-histoire/"
-              target="_blank"
-              className={styles.navbar_menu_our_history}
-            >
-              Notre histoire
-            </a>
-            <a
-              href="https://www.champagne-philippe-gonet.com/cuvees/"
-              target="_blank"
-              className={styles.navbar_menu_vintage}
-            >
-              Nos cuvées
-            </a>
-            <a
               href="https://www.champagne-philippe-gonet.com/club/"
               target="_blank"
               className={styles.navbar_menu_club}
             >
               Le club
+            </a>
+            <a
+              href="https://wa.me/message/WZZB6ATQWIKPN1"
+              target="_blank"
+              className={styles.navbar_menu_our_history}
+            >
+              <img
+                className={styles.navbar_logo}
+                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/whatsapp2.svg?alt=media&token=7a7cde58-ac4c-4e63-943f-c6972e9b0870"
+              />
+            </a>
+            <a
+              href="https://discord.gg/evb3c6sSh7"
+              target="_blank"
+              className={styles.navbar_menu_vintage}
+            >
+              <img
+                className={styles.navbar_logo}
+                src="https://firebasestorage.googleapis.com/v0/b/philippe-gonet.appspot.com/o/discord2.svg?alt=media&token=252dac3a-179c-4bb8-9767-79f6156a73fc"
+              />
             </a>
           </div>
         </div>

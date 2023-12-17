@@ -18,7 +18,7 @@ import { getAddress, fromHex } from "viem";
 import ClubCPG from "@/contracts/ClubCPG.json";
 import { useApprove } from "@/hook/useApprove.js";
 import { useMint } from "@/hook/useMint.js";
-import { MAX_QUANTITY_NFT, PRICE } from "@/utils/constant";
+import { MAX_QUANTITY_NFT, PRICE, FAKE_PRICE } from "@/utils/constant";
 import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 function CheckoutMembership() {
   const [isPlusToggled, setIsPlusToggled] = useState(false);
@@ -26,6 +26,7 @@ function CheckoutMembership() {
   const [isTimeoutApproveActive, setIsTimeoutApproveActive] = useState(false);
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(PRICE);
+  const [totalPriceFake, setTotalPriceFake] = useState(FAKE_PRICE);
   const [isMount, setIsMount] = useState(false);
   const [isNoWalletButtonClicked, setIsNoWalletButtonClicked] = useState(false);
   const {
@@ -118,6 +119,7 @@ function CheckoutMembership() {
       setIsPlusToggled(false);
     }
     setTotalPrice(PRICE * quantityCount);
+    setTotalPriceFake(FAKE_PRICE * quantityCount);
   }, [quantityCount]);
 
   useEffect(() => {
@@ -273,9 +275,9 @@ function CheckoutMembership() {
                           ? styles.checkout_membership_price_tablet
                           : styles.checkout_membership_price
                       }
-                      key={totalPrice}
+                      key={totalPriceFake}
                     >
-                      {totalPrice}
+                      {totalPriceFake}
                     </div>
                     <div className={styles.checkout_membership_price_currency}>
                       USDC

@@ -35,3 +35,4 @@ export const MAX_QUANTITY_NFT = 4;
 
 // Should come from BC call
 export const PRICE = 320;
+export const FAKE_PRICE = 335;

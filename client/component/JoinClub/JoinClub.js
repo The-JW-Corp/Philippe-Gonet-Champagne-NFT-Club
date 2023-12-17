@@ -40,7 +40,7 @@ function JoinClub({ handleMintButtonClick }) {
       </a>
 
       <div className={styles.join_club_price}>
-        Le prix est environs de 290€ ou 320$ (320 USDC)
+        Le prix est environs de 307€ ou 335$ (335 USDC)
       </div>
       <div
         style={windowWidth < 450 ? { fontSize: "12px" } : {}}
