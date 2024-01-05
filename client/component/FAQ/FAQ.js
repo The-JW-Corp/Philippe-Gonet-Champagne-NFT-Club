@@ -6,12 +6,12 @@ function FAQ() {
     {
       question: "QUAND ET OÙ AURA LIEU LA VENTE ?",
       answer:
-        "Vous pourrez accéder à la vente directement depuis ce site, le 17 décembre à 10h (heure de Paris). Nous vous invitons à vous rendre sur notre site quelques minutes avant et à cliquer sur “acheter” dès que l’option sera disponible publiquement. Pour vous assurer d’avoir accès à la vente, nous vous recommandons de vous inscrire à notre liste de diffusion, en ajoutant votre email, pour ne manquer aucune information et recevoir un mail quelques minutes avant l’ouverture de la boutique. Attention, dès que le paiement de votre carte membre est confirmé, pensez bien à ajouter votre adresse email afin que nous puissions vous recontacter et vous envoyer les instructions pour profiter de tous vos avantages.",
+        "Une pré-vente a eu lieu le 17 décembre 2023. La seconde phase ouvrira le 3 mars 2024. Nous vous invitons à vous rendre sur notre site quelques minutes avant et à cliquer sur “acheter” dès que l’option sera disponible publiquement. Pour vous assurer d’avoir accès à la vente, nous vous recommandons de vous inscrire à notre liste de diffusion, en ajoutant votre email, pour ne manquer aucune information et recevoir un mail quelques minutes avant l’ouverture de la boutique. Attention, dès que le paiement de votre carte membre est confirmé, pensez bien à ajouter votre adresse email afin que nous puissions vous recontacter et vous envoyer les instructions pour profiter de tous vos avantages.",
     },
     {
       question: "COMBIEN COÛTE LA CARTE MEMBRE ET COMMENT PAYER ?",
       answer:
-        "La carte membre est vendue au prix de 315$ USDC, soit environ 290€. Le prix pourra légèrement varier, compte tenu du caractère volatile des devises financières et des devises numériques. Le paiement se fera en utilisant la crypto-monnaie USDC, mais pas de panique, vous pourrez payer par carte bancaire, en utilisant le module de paiement “crossmint”. Crossmint convertira automatiquement vos euros en USDC, puis vous transférera le NFT (la carte membre) sur votre portefeuille numérique (votre wallet) attaché à votre adresse email. Si vous possédez un portefeuille numérique de type metamask avec des USDC, vous pourrez procéder à l’achat directement en utilisant votre portefeuille numérique. Attention, dès que le paiement de votre carte membre est confirmé, pensez bien à ajouter votre adresse email afin que nous puissions vous recontacter et vous envoyer les instructions pour profiter de tous vos avantages.",
+        "La carte membre est vendue au prix de 320$ soit environs 290€. Le prix pourra légèrement varier, compte tenu du caractère volatile des devises financières et des devises numériques auquel il convient d’ajouter, si vous payez par carte bancaire, un frais supplémentaire pris par la plateforme crossmint de 6%. Le paiement se fera en utilisant la crypto-monnaie USDC, mais pas de panique, vous pourrez payer par carte bancaire, en utilisant le module de paiement “crossmint”. Crossmint convertira automatiquement vos euros en USDC, puis vous transférera le NFT (la carte membre) sur votre portefeuille numérique (votre wallet) attaché à votre adresse email. Si vous possédez un portefeuille numérique de type metamask avec des USDC, vous pourrez procéder à l’achat directement en utilisant votre portefeuille numérique. Attention, dès que le paiement de votre carte membre est confirmé, pensez bien à ajouter votre adresse email afin que nous puissions vous recontacter et vous envoyer les instructions pour profiter de tous vos avantages.",
     },
     {
       question: "COMMENT UTILISER MA CARTE NUMÉRIQUE ?",
@@ -47,7 +47,7 @@ function FAQ() {
     {
       question: "Y A-T-IL UNE DATE LIMITE POUR UTILISER MA CARTE ?",
       answer:
-        "Les membres bénéficiant d’une adhésion d’un an (1er janvier 2024 au 31 décembre 2024) ont accès aux offres, cependant, dès l’expiration de leur abonnement, l’accès aux offres et prestations prend fin. Cela englobe tous les avantages tels que le stockage de leurs bouteilles dans la cave, l’accès aux réductions, ou encore celui aux cuvées exclusives.",
+        "Les membres bénéficiant d’une adhésion d’un an (du 3 Mars au 28 février 2025) ont accès aux offres, cependant, dès l’expiration de leur abonnement, l’accès aux offres et prestations prend fin. Cela englobe tous les avantages tels que le stockage de leurs bouteilles dans la cave, l’accès aux réductions, ou encore celui aux cuvées exclusives. Les membres ayant participé à la pré-vente bénéficient de 2 mois supplémentaires, avec un club débutant au 1er janvier 2024, ainsi que de cadeaux inédits de la part de la maison Philippe Gonet.",
     },
     {
       question:
