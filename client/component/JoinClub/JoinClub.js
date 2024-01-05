@@ -40,7 +40,7 @@ function JoinClub({ handleMintButtonClick }) {
       </a>
 
       <div className={styles.join_club_price}>
-        Le prix est de 320$ (290€) + 6% de frais de crossmint par carte bancaire
+        Le prix est de 320$ (290€) + 6% de frais de carte bancaire
       </div>
       <div
         style={windowWidth < 450 ? { fontSize: "12px" } : {}}
