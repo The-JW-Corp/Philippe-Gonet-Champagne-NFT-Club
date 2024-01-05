@@ -275,9 +275,9 @@ function CheckoutMembership() {
                           ? styles.checkout_membership_price_tablet
                           : styles.checkout_membership_price
                       }
-                      key={totalPriceFake}
+                      key={totalPrice}
                     >
-                      {totalPriceFake}
+                      {totalPrice}
                     </div>
                     <div className={styles.checkout_membership_price_currency}>
                       USDC
