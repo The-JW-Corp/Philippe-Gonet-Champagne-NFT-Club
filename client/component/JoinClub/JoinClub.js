@@ -21,8 +21,8 @@ function JoinClub({ handleMintButtonClick }) {
           REJOIGNEZ LE CLUB CHAMPAGNE PHILIPPE GONET
         </div>
         <div className={styles.join_club_subtitle}>
-          La vente est ouverte. N’attendez plus et achetez votre carte membre
-          dès maintenant.
+          La pré-vente est fermée. L’ouverture de la phase public aura lieu le
+          dimanche 3 mars 2024.
         </div>
       </div>
       <a
